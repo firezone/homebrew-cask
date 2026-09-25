@@ -1,8 +1,8 @@
 cask "firezone" do
-  version "1.5.19"
-  sha256 "163bcfb0cd87736276fb676b15639276b600f6306350fb2411425ce12207c810"
+  version "1.5.21"
+  sha256 "ec999cc6b8846f7d60dc5568acb2173f735c45969041ea89a906597d90b28228"
 
-  url "https://github.com/firezone/firezone/releases/download/macos-client-#{version}/firezone-macos-client-#{version}.dmg"
+  url "https://github.com/firezone/firezone/releases/download/apple-client-#{version}/firezone-macos-client-#{version}.dmg"
   name "Firezone"
   desc "Zero-trust access platform built on WireGuard"
   homepage "https://www.firezone.dev/"
@@ -15,6 +15,8 @@ cask "firezone" do
   depends_on macos: :ventura
 
   app "Firezone.app"
+  binary "#{appdir}/Firezone.app/Contents/Resources/bin/firezone"
+  generate_completions_from_executable "#{HOMEBREW_PREFIX}/bin/firezone", "--generate-completion-script"
 
   uninstall launchctl: "dev.firezone.firezone.keep-app-running"
 
